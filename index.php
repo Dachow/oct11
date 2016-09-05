@@ -2,6 +2,8 @@
 
         <div class="container">
 
+
+
 <?php while ( have_posts() ) : the_post(); ?>
         <section class="<?php the_ID(); ?>">
             <h3 class="title">
@@ -10,7 +12,7 @@
             <div class="content">
                 <?php the_content(); ?>
             </div>
-        </section>
+        </section>;
 <?php endwhile; ?>
 
         </div>

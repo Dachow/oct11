@@ -15,13 +15,17 @@ function my_enqueue_scripts() {
         // 去除已注册的 jquery 脚本
         wp_deregister_script( 'jquery' );
         // 注册 jquery 脚本
-        wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), $vaer = '3.1.0', false );
+        wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), $vaer = '3.1.0', true );
         // 提交加载 jquery 脚本
         wp_enqueue_script( 'jquery' );
         // 注册 bootstrap 脚本
-        wp_register_script( 'bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array( 'jquery' ), '3.3.7', false );
-        // 提交加载 jquery-easing 脚本
+        wp_register_script( 'bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array( 'jquery' ), '3.3.7', true );
+        // 提交加载 bootstrap 脚本
         wp_enqueue_script( 'bootstrap' );
+        // 注册 自己的 脚本
+        wp_register_script( 'script', get_template_directory_uri() . '/assets/js/script.js', array( 'jquery' ), '1.0', true );
+        // 提交加载 bootstrap 脚本
+        wp_enqueue_script( 'script' );
 
 
     } else { // 后台加载的脚本与样式表
@@ -33,5 +37,17 @@ function my_enqueue_scripts() {
 }
 // 添加回调函数到 init 动作上
 add_action( 'init', 'my_enqueue_scripts' );
+
+// 更改二級导航的类名
+class Sub_Nav_Menu extends Walker_Nav_Menu {
+
+  function start_lvl( &$output, $depth = 0, $args = array() ) {
+    $indent  = str_repeat( "\t", $depth );
+    $output .= "\n$indent<ul class=\"dropdown-menu\">\n";
+  }
+}
+
+// 小工具
+
 
  ?>

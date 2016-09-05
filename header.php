@@ -100,10 +100,18 @@
             </div>
 
 
-<!-- 自定义菜单 -->
-<?php wp_nav_menu( array( 'theme_location'=> 'header-menu', 'container'=>'nav', 'container_class' => 'collapse navbar-collapse', 'menu_class'=>'nav navbar-nav', 'depth'=>'1') );
+<!-- 自定义菜单, 仍需写出子菜单的触发事件 -->
+<?php
+  $defaults = array(
+    'theme_location' => 'header-menu',
+    'container' => 'nav',
+    'container_class' => 'collapse navbar-collapse',
+    'menu_class' => 'nav navbar-nav',
+    'depth' => '2',
+    'walker' => new Sub_Nav_Menu('')
+  );
+  wp_nav_menu($defaults);
 ?>
-
 
         </div>
     </header>
