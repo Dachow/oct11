@@ -1,9 +1,7 @@
 <?php get_header() ?>
 
-        <div class="container">
-
-
-
+<!-- 文章内容开始 -->
+      <div class="container">
 <?php while ( have_posts() ) : the_post(); ?>
         <section class="<?php the_ID(); ?>">
             <h3 class="title">
@@ -16,5 +14,5 @@
 <?php endwhile; ?>
 
         </div>
-
+<!-- 文章内容结束 -->
 <?php get_footer(); ?>

@@ -117,5 +117,5 @@
     </header>
     <!-- 导航结束 -->
 
-    <!-- 正文开始 -->
-    <div class="content">
+    <!-- 主体部分开始 -->
+    <main class="content">
