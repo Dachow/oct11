@@ -11,7 +11,19 @@
           </div>
     <?php while (have_posts()) : the_post(); ?>
       <div class="panel panel-default">
-        <div class="panel-heading"><h1><?php the_title(); ?></h1></div>
+        <div class="panel-heading">
+        <h2>
+            <?php
+            // 文章标题不存在时显示无标题
+            $getTitleLen = get_the_title();
+            if($getTitleLen) {
+                the_title();
+            } else {
+                echo "无标题";
+            }
+            ?>
+        </h2>
+    </div>
         <div class="panel-footer">
           <span class="date"><?php the_time(); ?></span>
           <span class="views">

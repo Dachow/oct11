@@ -175,4 +175,18 @@ function cmp_breadcrumbs()
     }
 }
 
+// 控制摘要字数
+function new_excerpt_length($length) {
+return 500;
+}
+add_filter('excerpt_length', 'new_excerpt_length');
+
+// 删除摘要末尾...字符
+function new_excerpt_more($more) {
+return '.....';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+
+
+
 ?>

@@ -27,15 +27,21 @@ $getCount = $category->category_count.' ';
   <ul class="list-group">
     <?php query_posts("showposts=15&cat=$getCatID")?>
     <!-- 根据需要修改文章数量和分类目录的ID -->
-<?php while (have_posts()) : the_post(); ?>
-<li class="list-group-item">
-<a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a>
-<span class="pull-right">
-<?php the_time('Y-m-d'); ?>
-</span>
-</li>
-<?php endwhile; ?>
-</ul>
+    <?php while (have_posts()) : the_post(); ?>
+        <?php $getTitleLen = get_the_title(); ?>
+        <li class="list-group-item">
+            <?php if($getTitleLen) : ?>
+                <!-- 标题的长度不为0时 -->
+                <a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a>
+            <?php else : ?>
+                <a href="<?php the_permalink() ?>" rel="bookmark"><?php echo "无标题"; ?></a>
+            <?php endif; ?>
+            <span class="pull-right">
+                <?php the_time('Y-m-d'); ?>
+            </span>
+        </li>
+    <?php endwhile; ?>
+    </ul>
 </div>
 </div>
 

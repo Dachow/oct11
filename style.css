@@ -15,28 +15,5 @@ Use it to make something cool, have fun, and share what you've learned with othe
 */
 
 @import url('assets/css/bootstrap.min.css');
-
-.single-page .panel .panel-footer {
-  text-align: right;
-}
-
-/*使页脚居于底部*/
-html, body {
-  height: 100%;
-}
-main.content
-{
-  min-height: 90%;
-}
-main.content .FooterPush
-  {
-    height: 20px; /* Footer 的高度 */
-  }
-footer
-{
-  clear: both; /* 清除浮动元素格式 */
-  position: relative;
-  margin-top: -20px; /* Footer 高度的负值 */
-  height: 20px;
-  text-align: center;
-}
+@import url('assets/fa/css/font-awesome.min.css');
+@import url('assets/css/own.css');

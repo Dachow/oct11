@@ -1,0 +1,42 @@
+@charset "UTF-8";
+/*
+* My own css rules for oct11.cn
+*/
+/* 公有样式 */
+html, body {
+  height: 100%;
+  font-family: Arial, Helvetica, 黑体, 微软雅黑, sans-serif; }
+
+main.content {
+  min-height: 90%; }
+  main.content .FooterPush {
+    height: 20px; }
+
+footer {
+  clear: both;
+  position: relative;
+  margin-top: -20px;
+  height: 20px;
+  text-align: center; }
+
+/* 私有样式 */
+.index-page h3.title {
+  font-family: 华文新魏; }
+.index-page .fa {
+  color: #aaa;
+  font-size: 17px; }
+
+.single-page .panel .panel-footer {
+  text-align: right; }
+
+.category-page .category-posts li:after {
+  content: ".";
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both; }
+
+.page-me .pic {
+  text-align: center; }
+
+/*# sourceMappingURL=own.css.map */
