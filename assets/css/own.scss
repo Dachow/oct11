@@ -40,14 +40,23 @@ footer {
 /* 私有样式 */
 
 // index页
-// 标题字体
 .index-page {
+    // 标题字体
     h3.title {
         font-family: 华文新魏;
     }
     .fa {
         color: #aaa;
         font-size: 17px;
+    }
+    // 摘要图样式
+    .content {
+      .img {
+        text-align: center;
+        img {
+          border-radius: 6px;
+        }
+      }
     }
 }
 // single页

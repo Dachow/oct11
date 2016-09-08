@@ -176,17 +176,36 @@ function cmp_breadcrumbs()
 }
 
 // 控制摘要字数
-function new_excerpt_length($length) {
-return 500;
+function new_excerpt_length($length)
+{
+    return 500;
 }
 add_filter('excerpt_length', 'new_excerpt_length');
 
 // 删除摘要末尾...字符
-function new_excerpt_more($more) {
-return '.....';
+function new_excerpt_more($more)
+{
+    return '.....';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 
-
+//判断文章中是否含有图片
+function don_the_thumbnail()
+{
+    global $post;
+ // 判断该文章是否设置的缩略图，如果有则直接显示
+ if (has_post_thumbnail()) {
+     echo the_post_thumbnail();
+ } else { //如果文章没有设置缩略图，则查找文章内是否包含图片
+   $content = $post->post_content;
+     preg_match_all('/<img.*?(?: |\\t|\\r|\\n)?src=[\'"]?(.+?)[\'"]?(?:(?: |\\t|\\r|\\n)+.*?)?>/sim', $content, $strResult, PREG_PATTERN_ORDER);
+     $n = count($strResult[1]);
+     if ($n > 0) { // 如果文章内包含有图片，就用第一张图片做为缩略图
+echo '<img src="'.$strResult[1][0].'" />';
+     } else { // 如果文章内没有图片，则用默认的图片。
+  echo '';
+     }
+ }
+}
 
 ?>

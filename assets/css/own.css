@@ -25,6 +25,10 @@ footer {
 .index-page .fa {
   color: #aaa;
   font-size: 17px; }
+.index-page .content .img {
+  text-align: center; }
+  .index-page .content .img img {
+    border-radius: 6px; }
 
 .single-page .panel .panel-footer {
   text-align: right; }

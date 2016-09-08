@@ -2,7 +2,16 @@
 
 <!-- 文章内容开始 -->
       <div class="container index-page">
-<?php while ( have_posts() ) : the_post(); ?>
+        <!-- The Query  -->
+        <?php
+        $args = array(
+            // 不显示轮播图分类下的文章，分类ID为5
+            'category__not_in' => array(5),
+        );
+         ?>
+         <!-- 自定义模板需要使用query_posts查询 -->
+        <?php query_posts($args); ?>
+        <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
     <!-- 形成posts-ID的类名 -->
     <?php $getPostsID = get_the_ID(); ?>
     <section class="<?php echo "posts{$getPostsID}"; ?>">
@@ -22,10 +31,15 @@
             </h3>
             <div class="content">
                 <?php the_excerpt(); ?>
+                <div class="img"><?php don_the_thumbnail() ;?></div>
             </div>
         </section>
         <hr class="hr" />
-<?php endwhile; ?>
+      <?php endwhile; else: ?>
+    <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+    <?php endif; ?>
+        <!-- Reset Query  -->
+        <?php wp_reset_query(); ?>
 
         </div>
 <!-- 文章内容结束 -->
