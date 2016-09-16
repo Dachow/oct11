@@ -6,18 +6,35 @@
   <div class="category-name">
   <ul class="list-group">
   <li class="list-group-item">
+
+
 <?php
+// old
+/*
 foreach ((get_the_category()) as $category) {
-    // echo '<h3>';
 $getCatID = $category->cat_ID.' ';
     echo $category->cat_name.' ';
 // echo $category->category_nicename . ' ';
 // echo $category->category_description . ' ';
 // echo $category->category_parent . ' ';
 $getCount = $category->category_count.' ';
-// echo '</h3>';
-}?>
-<span class="badge"><?php echo $getCount ?></span>
+}
+*/
+?>
+
+<?php
+//   从url获取文章分类id的方法;
+    $getHref = $_SERVER["QUERY_STRING"];
+    if(preg_match('/\d+/', $getHref, $arr)){
+        $cat_ID = $arr[0];
+    }
+
+    single_cat_title();
+    // 获取分类及子分类文章数目
+    $getCount = get_cat_postcount_all($cat_ID);
+?>
+
+<span class="badge"><?php echo $getCount; ?></span>
   </li>
 </ul>
 </div>
@@ -25,7 +42,7 @@ $getCount = $category->category_count.' ';
 <!-- 列出当前分类文章 -->
 <div class="category-posts">
   <ul class="list-group">
-    <?php query_posts("showposts=15&cat=$getCatID")?>
+    <?php query_posts("showposts=15&cat=$cat_ID"); echo $getCatID; ?>
     <!-- 根据需要修改文章数量和分类目录的ID -->
     <?php while (have_posts()) : the_post(); ?>
         <?php $getTitleLen = get_the_title(); ?>
@@ -41,6 +58,7 @@ $getCount = $category->category_count.' ';
             </span>
         </li>
     <?php endwhile; ?>
+    <?php wp_reset_query(); ?>
     </ul>
 </div>
 </div>

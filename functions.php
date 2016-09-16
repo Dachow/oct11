@@ -208,4 +208,21 @@ echo '<img src="'.$strResult[1][0].'" />';
  }
 }
 
-?>
+// 获取分类及子分类文章数目
+
+function get_cat_postcount_all($id) {
+ // 获取当前分类信息
+ $cat = get_category($id);
+
+ // 当前分类文章数
+ $count = (int) $cat->count;
+
+ // 获取当前分类所有子孙分类
+ $tax_terms = get_terms('category', array('child_of' => $id));
+
+ foreach ($tax_terms as $tax_term) {
+  // 子孙分类文章数累加
+  $count +=$tax_term->count;
+ }
+ return $count;
+}
