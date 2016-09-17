@@ -21,15 +21,16 @@ footer {
   text-align: center; }
 
 /* 私有样式 */
-.home-page h3.title {
+.home-page h3.title, .index-page h3.title {
   font-family: 华文新魏; }
-.home-page .fa {
+.home-page .fa, .index-page .fa {
   color: #aaa;
   font-size: 17px; }
-.home-page .content .img {
+.home-page .content .img, .index-page .content .img {
   text-align: center; }
-  .home-page .content .img img {
-    border-radius: 6px; }
+  .home-page .content .img img, .index-page .content .img img {
+    border-radius: 6px;
+    max-width: 100%; }
 
 .single-page .panel .panel-footer {
   text-align: right; }

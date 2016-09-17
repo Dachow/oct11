@@ -24,9 +24,11 @@ $getCount = $category->category_count.' ';
 
 <?php
 //   从url获取文章分类id的方法;
-    $getHref = $_SERVER["QUERY_STRING"];
-    if(preg_match('/\d+/', $getHref, $arr)){
+    $getHref = $_SERVER['PHP_SELF'];
+    echo $getHref;
+    if(preg_match('/(?<=[t][a][g][=]).*/', $getHref, $arr)){
         $cat_ID = $arr[0];
+        // echo $cat_ID;
     }
 
     single_cat_title();

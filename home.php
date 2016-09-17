@@ -3,7 +3,7 @@
 <!-- 文章内容开始 -->
       <div class="container home-page">
       <div class="row">
-
+<a href="asdas" class="href">ad</a>
       <!--section left-->
       <section class="col-sm-9 left">
         <!-- The Query  -->
@@ -14,7 +14,11 @@
         );
          ?>
          <!-- 自定义模板需要使用query_posts查询 -->
-        <?php query_posts($args); ?>
+        <?php 
+            // 一定要注释php标签里面的语句，连同php标签一起用html注释无效
+            // query_posts($args);
+         ?>
+         <?php $the_query = new WP_Query( ); ?>
         <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
     <!-- 形成posts-ID的类名 -->
     <?php $getPostsID = get_the_ID(); ?>
@@ -37,13 +41,23 @@
                 <?php the_excerpt(); ?>
                 <div class="img"><?php don_the_thumbnail() ;?></div>
             </div>
-        </section>
+    </section>
         <hr class="hr" />
-      <?php endwhile; else: ?>
-    <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+      <?php endwhile; ?>
+
+      <!-- Blog Navigation -->
+     <p class="more-posts">
+     <span class="previous pull-left"><?php next_posts_link('&lt;&lt; previous', 0); ?></span>
+     <span class="next pull-right"><?php previous_posts_link('next &gt;&gt;', 0); ?></span>
+     </p>
+     
+     <?php else : ?>
+     <p><?php _e('Sorry, no posts matched in this site.'); ?></p>
+    
     <?php endif; ?>
+
         <!-- Reset Query  -->
-        <?php wp_reset_query(); ?>
+        <!-- <?php wp_reset_query(); ?> -->
         </section>
 
         <!-- section right-->

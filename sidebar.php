@@ -6,7 +6,7 @@
 <div class="panel panel-info cats">
   <div class="panel-heading"><h4 class="panel-title">分类目录</h4></div>
   <ul class="panel-body">
-    <?php wp_list_categories('depth=0&title_li=&orderby=id&show_count=1&hide_empty=0&child_of=0'); ?>
+    <?php wp_list_categories('depth=0&title_li=&orderby=id&show_count=1&hide_empty=1&child_of=0'); ?>
   </ul>
 </div>
     <?php endif; ?>
@@ -42,7 +42,19 @@
     <h4 class="panel-title">标签云</h4>
   </div>
   <div class="panel-body">
-    <?php wp_tag_cloud('smallest=8&largest=22'); ?>
+    <?php 
+    // wp_tag_cloud('smallest=8&largest=22');
+    $tags = get_tags();
+
+    foreach ( $tags as $tag ) {
+	    $tag_link = get_tag_link( $tag->term_id );
+			
+	    $html .= "<a href='{$tag_link}' title='{$tag->name} Tag' class='{$tag->slug}'>";
+	    $html .= "{$tag->name}</a>";
+    }
+    echo $html;
+    
+     ?>
   </div>
 </div>
     <?php endif; ?>

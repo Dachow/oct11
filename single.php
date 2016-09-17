@@ -1,6 +1,7 @@
 <?php get_header() ?>
 
         <div class="container single-page">
+
           <div class="path">
             <ol class="breadcrumb">
               <!-- 插入面包屑导航 -->
@@ -9,6 +10,7 @@
 } ?>
 </ol>
           </div>
+
     <?php while (have_posts()) : the_post(); ?>
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -25,6 +27,7 @@
         </h2>
     </div>
         <div class="panel-footer">
+        <?php edit_post_link('edit', '<span class="edit">', '</span>'); ?>
           <span class="date"><?php the_time(); ?></span>
           <span class="views">
             <!-- 获取浏览次数 -->
@@ -37,5 +40,7 @@
  </div>
         </div>
     <?php endwhile; ?>
+
+
         </div>
 <?php get_footer(); ?>

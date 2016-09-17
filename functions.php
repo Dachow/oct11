@@ -259,3 +259,17 @@ if( function_exists('register_sidebar') ) {
 		'after_title' => '</h4>'
 	));
 }
+
+
+// 改密保文章正文提示文字,来自 http://www.ecdoer.com/post/wordpress-password-content.html
+// 使用自定义字段进行密码提示，参考 http://devework.com/wordpress-custom-fields-add-password-tip.html
+function change_the_password_form() {
+    global $post;
+    $label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );
+    $output = '<form class="protected-post-form" action="' . get_option('siteurl') . '/wp-login.php?action=postpass" method="post">
+    ' . __( "<p>天啦噜，竟然被你发现了┌(。Д。)┐ 不行，不能让你轻易看到！</p>" ) . '
+    <p><label for="' . $label . '">' . '输入口令解开封印：' . ' <input name="post_password" id="' . $label . '" type="password" size="20" /></label> <input type="submit" name="Submit" value="' . "开！>.<" . '" /></p>
+    </form> ';
+    return $output;
+}
+add_filter( 'the_password_form', 'change_the_password_form' );
