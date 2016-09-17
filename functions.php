@@ -209,7 +209,6 @@ echo '<img src="'.$strResult[1][0].'" />';
 }
 
 // 获取分类及子分类文章数目
-
 function get_cat_postcount_all($id) {
  // 获取当前分类信息
  $cat = get_category($id);
@@ -225,4 +224,38 @@ function get_cat_postcount_all($id) {
   $count +=$tax_term->count;
  }
  return $count;
+}
+
+
+// 右侧sidebar，会在外观增加小公举选项
+/** widgets */
+if( function_exists('register_sidebar') ) {
+	register_sidebar(array(
+		'name' => 'First_sidebar',
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '<h4>',
+		'after_title' => '</h4>'
+	));
+	register_sidebar(array(
+		'name' => 'Second_sidebar',
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '<h4>',
+		'after_title' => '</h4>'
+	));
+	register_sidebar(array(
+		'name' => 'Third_sidebar',
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '<h4>',
+		'after_title' => '</h4>'
+	));
+	register_sidebar(array(
+		'name' => 'Fourth_sidebar',
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '<h4>',
+		'after_title' => '</h4>'
+	));
 }

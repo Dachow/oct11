@@ -13,34 +13,44 @@
     }
 }
 
+// 更长内容仅显示在一行
+@mixin show-in-line() {
+		display: block;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap; 
+}
 
 /* 公有样式 */
 
 // 使页脚居于底部
-html, body {
-  height: 100%;
-  font-family: Arial, Helvetica, 黑体, 微软雅黑, sans-serif;
+html,
+body {
+    height: 100%;
+    font-family: Arial, Helvetica, 黑体, 微软雅黑, sans-serif;
 }
+
 main.content {
-  min-height: 90%;
-  .FooterPush {
-    // Footer 的高度
-      height: 20px;
-  }
+    min-height: 90%;
+    .FooterPush {
+        // Footer 的高度
+        height: 20px;
+    }
 }
+
 footer {
-  clear: both;
-  position: relative;
-  margin-top: -20px;
-  height: 20px;
-  text-align: center;
+    clear: both;
+    position: relative;
+    margin-top: -20px;
+    height: 20px;
+    text-align: center;
 }
 
 
 /* 私有样式 */
 
-// index页
-.index-page {
+// home页
+.home-page {
     // 标题字体
     h3.title {
         font-family: 华文新魏;
@@ -51,19 +61,21 @@ footer {
     }
     // 摘要图样式
     .content {
-      .img {
-        text-align: center;
-        img {
-          border-radius: 6px;
+        .img {
+            text-align: center;
+            img {
+                border-radius: 6px;
+            }
         }
-      }
     }
 }
+
 // single页
 // 时间和阅读次数右移
 .single-page .panel .panel-footer {
-  text-align: right;
+    text-align: right;
 }
+
 // category页
 // 清除没有标题造成的列表浮动
 .category-page {
@@ -73,10 +85,28 @@ footer {
         }
     }
 }
+
 // page-me页
 // 图片居中
 .page-me {
     .pic {
         text-align: center;
+    }
+}
+
+// sidebar页 ul作用于所有ul, &.panel-body仅作用于ul.panel-body
+.sidebar-page {
+    .panel {
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+            li {
+                @include show-in-line();
+            }
+            &.panel-body > li {
+                line-height: 2;
+                margin: 7px 0;
+            }
+        }
     }
 }

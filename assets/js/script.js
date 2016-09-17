@@ -11,4 +11,12 @@ $(document).ready(function(){
 
   // 主页文章摘要图样式
   // $(".index-page .content img").addClass("img-rounded");
+
+  var getLabels = document.querySelectorAll(".sidebar-page .labels .panel-body a");
+  var classLists = ["label label-primary", "label label-success", "label label-info", "label label-warning", "label label-danger"]
+  for (var i = 0; i < getLabels.length; i++) {
+      var randomIndex = Math.floor( Math.random() * classLists.length );
+    //   js和jquery混用
+      $(getLabels[i]).addClass(classLists[randomIndex]);
+  }
 });

@@ -3,7 +3,8 @@
 * My own css rules for oct11.cn
 */
 /* 公有样式 */
-html, body {
+html,
+body {
   height: 100%;
   font-family: Arial, Helvetica, 黑体, 微软雅黑, sans-serif; }
 
@@ -20,14 +21,14 @@ footer {
   text-align: center; }
 
 /* 私有样式 */
-.index-page h3.title {
+.home-page h3.title {
   font-family: 华文新魏; }
-.index-page .fa {
+.home-page .fa {
   color: #aaa;
   font-size: 17px; }
-.index-page .content .img {
+.home-page .content .img {
   text-align: center; }
-  .index-page .content .img img {
+  .home-page .content .img img {
     border-radius: 6px; }
 
 .single-page .panel .panel-footer {
@@ -42,5 +43,17 @@ footer {
 
 .page-me .pic {
   text-align: center; }
+
+.sidebar-page .panel ul {
+  list-style-type: none;
+  padding-left: 20px; }
+  .sidebar-page .panel ul li {
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; }
+  .sidebar-page .panel ul.panel-body > li {
+    line-height: 2;
+    margin: 7px 0; }
 
 /*# sourceMappingURL=own.css.map */
